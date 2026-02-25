@@ -1,0 +1,9 @@
+{
+    "Group": "TwizzyTech",
+    "Name": "Konfig",
+    "group": "TwizzyTech",
+    "name": "Konfig",
+    "Version": "0.0.1",
+    "Main": "hype.tech.twizzy.Konfig.KonfigPlugin",
+    "ServerVersion": "1.0.0"
+}

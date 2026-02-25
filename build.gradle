@@ -1,0 +1,42 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.3.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+
+
+group = 'TwizzyTech'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    maven { url 'https://maven.hytale.com/release' }
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly files('/app/server/Server/HytaleServer.jar')
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+
+sourceSets {
+    main {
+        kotlin {
+            srcDirs = ['src/main/kotlin']
+        }
+    }
+}
+
+shadowJar {
+    archiveFileName = 'Konfig.jar'
+    // Relocation disabled for Java 25 compatibility (ASM limits)
+}
+
+tasks.named('build') {
+    dependsOn shadowJar
+}
